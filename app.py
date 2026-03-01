@@ -12,5 +12,7 @@ def hello():
     ok = 2
     return render_template('login.html', ok=ok)
 
+
+
 if __name__ == '__main__':
     app.run(debug=True)
