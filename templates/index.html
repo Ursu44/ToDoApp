@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>To do app</title>
+</head>
+<body>
+<main>
+    <h1>To do application</h1>
+    <form>
+        <fieldset class="card">
+            <p class="background-colored-paragraph">Welcome {{ user['prenume'] }}</p>
+            <p class="info">Welcome to our application. This app will help you manage your daily tasks and keep a better
+                evidence of them. To view all of them, please press the first button, to view just one, enter the number
+                of it and press the second button.</p>
+            <button type="button" id="viewTasksBtn" class="btn-1">View Tasks</button><br><br>
+            <input type="number" id="task_number" name="task_number" class="inbox"><br>
+            <button type="button" id="viewTaskBtn" class="btn-1">View Task</button><br><br>
+              <button id="logoutButton" class="buton_1">Logout</button>
+        </fieldset>
+    </form>
+</main>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#viewTasksBtn").click(function() {
+            window.location.href = '/tasks';
+        });
+
+        $("#viewTaskBtn").click(function() {
+            var taskNumber = $("#task_number").val();
+            window.location.href = '/tasks/' + taskNumber;
+        });
+    });
+</script>
+
+    <style>
+      
+      .background-colored-paragraph {
+        color: green; 
+       }
+
+    h1 {
+        transform: translate (-50%, -50%);
+        font-size:70px;
+        -webkit-text-stroke: 1px #000;
+        color:transparent;
+        background-image: linear-gradient(#1cbae6, #000);
+        background-repeat: no-repeat;
+        -webkit-background-clip:text;
+        background-position: -1650px, 0;
+        animation: backcolor 3s linear infinite alternate;
+    }
+    @keyframes backcolor{
+      100%{
+        background-position: 0 0 ;
+      }
+    }
+
+    .card{
+      width:auto;
+      height:100%;
+      border-radius:25px;
+      backdrop-filter:blur(5px);
+      background-color:rgb(0,255,255,0.3);
+    }
+
+    form{
+      background-color: rgb(0,255,255,0.3);
+      padding-top: 34px;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: auto;
+      border-radius: 3px;
+      margin: auto;
+      margin-top:10px;
+      padding-bottom: 60px;
+      width: auto;
+    }
+
+    .info{
+      font-size: 16px;
+      line-height: 25px;
+      margin:40px 0;
+      font-weight:400;
+    }
+
+    input[type="number"]{
+      height: 30px;
+      width: 198.5px;
+      background-color: #eee;
+      border:2px;
+      position: relative;
+      font-size: 2em;
+      color:#333;
+      text-align: center;
+      border-radius: 5px;
+    }
+
+    input[type=number]:focus {
+      background-color: rgb(17, 177, 231);
+      border: 3px solid orange;
+    }
+
+    .btn-1 {
+      background-color: #ff4466;
+      border: 2px solid #1cbae6;
+      text-transform: uppercase;
+      padding: 10px 10px;
+      margin: 10px;
+      cursor: pointer;
+      transition: color 0.4s;
+      position: relative;
+
+    }
+
+    .buton_1 {
+      background-color: rgb(0,255,255,0.3);
+      border: 2px solid #1cbae6;
+      text-transform: uppercase;
+      padding: 10px 10px;
+      margin: 10px;
+      cursor: pointer;
+      transition: color 0.4s;
+      position: relative;
+      align: left;
+      margin-left: 1350px;
+      height: 45px;
+      width: 120px;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+      overflow: hidden; /* Hide the pseudo-element initially */
+  }
+  
+  .buton_1::before {
+      content: "";
+      position: absolute;
+      top: 100%; 
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #1cbae6;
+      transition: top 0.3s ease-in-out;
+      z-index: -1;
+  }
+  
+  .buton_1:hover::before {
+      top: 0;
+  }
+    .button-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      margin-left: 1000px; 
+    }
+
+
+    .btn-1:hover {
+      color: #1cbae6;
+    }
+
+    .btn-1::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: #1cbae6;
+      z-index: -1;
+      transition: transform 0.5s;
+      transform-origin: 0 0;
+      transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+    }
+
+    .btn-1::before {
+      transform: scaleX(0);
+    }
+
+    .btn-1:hover::before {
+      transform: scaleX(1);
+    }
+    
+    body {
+      background-image: url("https://cdn1.vectorstock.com/i/1000x1000/13/40/todo-list-seamless-pattern-universal-background-vector-7561340.jpg");
+     }
+
+    </style>
+
+    
+  </body>
+</html>

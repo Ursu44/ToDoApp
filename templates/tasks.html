@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>To do app</title>
+</head>
+<body>
+    <h1>To do application</h1>
+    <form action="/submit_task" method="post" id="forms">
+        <fieldset class="card">
+        <h2>Introduce a new task</h2>
+        <label for="task_title">Task Title:</label><br><br>
+        <input type="text" id="task_title" name="task_title" required><br><br>
+        
+        <label for="task_description">Task Description:</label><br><br>
+        <textarea id="task_description" name="task_description" required></textarea><br><br>
+        
+        <button type="submit" class="buton">Create Task</button><br>
+        </fieldset>
+    </form>
+
+    <ul>
+        {% for task in tasks %}
+        <fieldset>
+          <div class="{% if task.task_state == 'Completed' %}task-container{% endif %}">
+            <div class="{% if task.task_state == 'Completed' %}task-header{% endif %}">
+            <h3 class="{% if task.task_state == 'Completed' %}completed{% endif %}">  The task number {{ task["task_number"] }}, {{ task["task_title"] }},{{ task["task_description"] }} </h3>
+            <strong>Status:</strong> 
+            <span class="{% if task.task_state == 'Completed' %}task-completed{% else %}task-not-completed{% endif %}">
+              {{ task.task_state }}
+           </span><br><br><br><br>
+            <form action="/tasks/{{ task.task_number }}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit" class="buton_1">Delete</button>
+            </form>
+
+            <form action="/tasks/{{ task['task_number'] }}" method="post">
+                <input type="hidden" name="_method_1" value="put">
+                <button type="submit" class="buton">Update</button>
+            </form>
+            </div>
+            
+
+            {% if task.task_state == 'Completed' %}
+            <div class="checked">
+              <span class="check-sign">&#10003;</span>
+            </div>
+            {% endif %}
+          </div>
+        </fieldset><br><br>
+        {% endfor %}
+    </ul>
+    <button type="button" class="buton_1" onclick="goBack()">Back</button>
+
+    <style>
+
+      .check-sign {
+        margin-left: 1400px;
+        margin-top: 1500px;
+        margin-bottom: 1900px;
+        font-size: 60px;
+        color:green;
+    }
+
+      .completed {
+        text-decoration: line-through;
+      }
+
+        h1 {
+            transform: translate (-50%, -50%);
+            font-size:70px;
+            -webkit-text-stroke: 1px #000;
+            color:transparent;
+            background-image: linear-gradient(#1cbae6, #000);
+            background-repeat: no-repeat;
+            -webkit-background-clip:text;
+            background-position: -1650px, 0;
+            animation: backcolor 2s linear infinite alternate;
+        }
+
+        @keyframes backcolor{
+            100%{
+              background-position: 0 0 ;
+            }
+          }
+
+
+        
+    .card{
+        width:90%;
+        height:100%;
+        border-radius:25px;
+        backdrop-filter:blur(5px);
+        background-color:rgb(255,255,255,0.2);
+      }
+  
+      #forms{
+        background-color: rgb(0,0,0,0.8);
+        padding-top: 34px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: auto;
+        border-radius: 3px;
+        margin: auto;
+        margin-top:10px;
+        padding-bottom: 60px;
+        width: auto;
+      }
+  
+      .info{
+        font-size: 16px;
+        line-height: 25px;
+        margin:40px 0;
+        font-weight:400;
+      }
+  
+      input[type="text"]{
+        height: 30px;
+        width: 298.5px;
+        background-color: #eee;
+        border:2px;
+        position: relative;
+        font-size: 2em;
+        color:#333;
+        text-align: center;
+        border-radius: 5px;
+      }
+  
+      input[type=text]:focus {
+        background-color: rgb(17, 177, 231);
+        border: 3px solid orange;
+      }
+
+      textarea:focus {
+        background-color: rgb(17, 177, 231);
+        border: 3px solid orange;
+      }
+
+      textarea{
+        height: 90px;
+        width: 498.5px;
+        background-color: #eee;
+        border:2px;
+        position: relative;
+        font-size: 2em;
+        color:#333;
+        text-align: center;
+        border-radius: 5px;
+      }
+
+      button{
+        background-color: green;
+        border-radius: 15px;
+        margin: 8px 1px;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .buton_1{
+        background-color: #DC143C;
+        border-radius: 15px;
+        margin: 8px 1px;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      fieldset{
+        color:#236AB9
+        width:auto;
+        margin-left:-34px;
+        border-radius:5px;
+      }
+
+      .togheter{
+          display:flex;
+          flex-direction:raw;
+      }
+
+      .task-completed {
+        border-radius:4px;
+        font-size: 18px;
+        background-color: green;
+        color: white;
+    }
+
+    span{
+       padding:12px;
+    }
+    
+    .task-not-completed {
+        border-radius:4px;
+        font-size: 18px;
+        background-color: gray;
+    }
+
+    body {
+      background-image: url("https://cdn1.vectorstock.com/i/1000x1000/13/40/todo-list-seamless-pattern-universal-background-vector-7561340.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    </style>
+
+
+<script>
+function goBack() {
+    window.location.href = '/index';
+}
+</script>
+</body>
+</html>

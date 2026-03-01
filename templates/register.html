@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>To do app</title>
+</head>
+<body>
+    <h1>To do application</h1>
+    <form action="/register" method="post" id="forms">
+        <fieldset class="card">
+          
+        {% if ok == 1%}
+          <p class="background-colored-paragraph">Authetification succesfuly</p>
+        {% endif %}
+        
+        <label for="">Last name:</label><br><br>
+        <input type="text" id="last_name" name="last_name" required><br><br>
+        
+        <label for="task_description">First name:</label><br><br>
+        <input type="text" id="first_name" name="first_name" required><br><br>
+
+        <label for="task_description">Email:</label><br><br>
+        <input type="mail" id="email" name="email" required><br><br>
+
+        <label for="task_description">Password:</label><br><br>
+        <input type="password" id="pass" name="pass" required><br><br>
+        
+        <button type="submit" class="buton">Register</button><br><br>
+
+        <p>If you already have an account go back to <a href="javascript:history.back()">login</a></p>
+
+        </fieldset>
+    </form>
+
+    <style>
+
+      .background-colored-paragraph {
+          color: green; 
+       }
+
+        h1 {
+            transform: translate (-50%, -50%);
+            font-size:70px;
+            -webkit-text-stroke: 1px #000;
+            color:transparent;
+            background-image: linear-gradient(#1cbae6, #000);
+            background-repeat: no-repeat;
+            -webkit-background-clip:text;
+            background-position: -1650px, 0;
+            animation: backcolor 2s linear infinite alternate;
+        }
+
+        @keyframes backcolor{
+            100%{
+              background-position: 0 0 ;
+            }
+          }
+
+
+        
+    .card{
+        border-radius:25px;
+        backdrop-filter:blur(5px);
+        background-color:rgb(255,255,255,0.2);
+        align:center;
+        width: 80%;
+        height:auto;
+      }
+  
+      #forms{
+        background-color: rgb(0,0,0,0.8);
+        align:center;
+        padding-top: 34px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: auto;
+        border-radius: 3px;
+        margin: auto;
+        margin-top:10px;
+        padding-bottom: 60px;
+        width:500px;
+        height:auto;
+      }
+  
+      .info{
+        font-size: 16px;
+        line-height: 25px;
+        margin:40px 0;
+        font-weight:400;
+      }
+  
+      input[type="text"]{
+        height: 30px;
+        width: auto;
+        background-color: #eee;
+        border:2px;
+        position: relative;
+        font-size: 2em;
+        color:#333;
+        text-align: center;
+        border-radius: 5px;
+      }
+  
+      input[type=text]:focus {
+        background-color: rgb(17, 177, 231);
+        border: 3px solid orange;
+      }
+
+
+      input[type="mail"]{
+        height: 30px;
+        width: auto;
+        background-color: #eee;
+        border:2px;
+        position: relative;
+        font-size: 2em;
+        color:#333;
+
+        text-align: center;
+        border-radius: 5px;
+      }
+  
+      input[type=mail]:focus {
+        background-color: rgb(17, 177, 231);
+        border: 3px solid orange;
+      }
+
+      input[type="password"]{
+        height: 30px;
+        width: auto;
+        background-color: #eee;
+        border:2px;
+        position: relative;
+        font-size: 2em;
+        color:#333;
+
+        text-align: center;
+        border-radius: 5px;
+      }
+  
+      input[type=password]:focus {
+        background-color: rgb(17, 177, 231);
+        border: 3px solid orange;
+      }
+
+      textarea:focus {
+        background-color: rgb(17, 177, 231);
+        border: 3px solid orange;
+      }
+
+      textarea{
+        height: 90px;
+        width: 498.5px;
+        background-color: #eee;
+        border:2px;
+        position: relative;
+        font-size: 2em;
+        color:#333;
+        text-align: center;
+        border-radius: 5px;
+      }
+
+      button{
+        background-color: green;
+        border-radius: 15px;
+        margin: 8px 1px;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      .buton_1{
+        background-color: #DC143C;
+        border-radius: 15px;
+        margin: 8px 1px;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      fieldset{
+        color:#236AB9
+        width:auto;
+        margin-left:-34px;
+        border-radius:5px;
+      }
+
+      .togheter{
+          display:flex;
+          flex-direction:raw;
+      }
+
+      .task-completed {
+        border-radius:4px;
+        font-size: 18px;
+        background-color: green;
+        color: white;
+    }
+
+    span{
+       padding:12px;
+    }
+    
+    .task-not-completed {
+        border-radius:4px;
+        font-size: 18px;
+        background-color: gray;
+    }
+
+    body {
+      background-image: url("https://cdn1.vectorstock.com/i/1000x1000/13/40/todo-list-seamless-pattern-universal-background-vector-7561340.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    </style>
+
+    <script>
+      document.getElementById("registerButton").onclick = function() {
+          location.reload();
+      };
+  </script>
+</body>
+</html>

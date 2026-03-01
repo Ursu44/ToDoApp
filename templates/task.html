@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>To do app</title>
+</head>
+<body>
+    <h1>To do application</h1>
+        <fieldset>
+            <h3>the task number {{ task.task_number }}, {{ task.task_title }}, {{ task.task_description }}</h3>
+            <strong>Status:</strong> 
+            <span class="{% if task.task_state == 'Completed' %}task-completed{% else %}task-not-completed{% endif %}">
+                {{ task.task_state }}
+             </span><br><br>
+        </fieldset>
+        <button type="button" class="buton_1" onclick="goBack()">Back</button>
+    <style>
+        h1 {
+            transform: translate (-50%, -50%);
+            font-size:70px;
+            -webkit-text-stroke: 1px #000;
+            color:transparent;
+            background-image: linear-gradient(#1cbae6, #000);
+            background-repeat: no-repeat;
+            -webkit-background-clip:text;
+            background-position: -1650px, 0;
+            animation: backcolor 6s linear infinite alternate;
+        }
+        
+        @keyframes backcolor{
+            100%{
+              background-position: 0 0 ;
+            }
+          }
+
+        fieldset{
+            width:auto;
+            margin-left:-4px;
+            border-radius:5px;
+          }
+
+          .task-completed {
+            border-radius:4px;
+            font-size: 18px;
+            background-color: green;
+            color: white;
+        }
+
+        span{
+           padding:12px;
+        }
+        
+        .task-not-completed {
+            background-color: gray;
+        }
+
+        body {
+            background-image: url("https://cdn1.vectorstock.com/i/1000x1000/13/40/todo-list-seamless-pattern-universal-background-vector-7561340.jpg");
+           }
+
+    </style>
+
+<script>
+function goBack() {
+    window.location.href = '/index';
+}
+</script>
+</body>
+</html>
